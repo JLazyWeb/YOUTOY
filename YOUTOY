@@ -14,38 +14,38 @@
         body {
             margin: 0;
             padding: 20px;
-            background: #f8f9fa;
+            background: #f4f4f9;
             color: #2c3e50;
         }
 
         .container {
             max-width: 600px;
             margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .title {
-            font-size: 24px;
+            font-size: 26px;
             color: #e67e22;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .form-group {
             margin-bottom: 20px;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         label {
+            font-weight: 500;
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
         }
 
         input[type="file"] {
@@ -53,94 +53,4 @@
             padding: 12px;
             border: 2px dashed #e67e22;
             border-radius: 8px;
-            background: #fff4ec;
-            color: #666;
-        }
-
-        textarea {
-            width: 100%;
-            height: 120px;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            resize: vertical;
-            font-size: 14px;
-        }
-
-        button {
-            background: #e67e22;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background: #d35400;
-        }
-
-        .hint {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1 class="title">🎨 Создайте свою фигурку</h1>
-            <p>Загрузите фото и укажите детали для идеального образа</p>
-        </div>
-
-        <div class="form-group">
-            <label>📸 Фотографии (минимум 3):</label>
-            <input type="file" accept="image/*" multiple required>
-            <div class="hint">Выберите фото: анфас, профиль, в любимом образе</div>
-        </div>
-
-        <div class="form-group">
-            <label>✏️ Особые пожелания:</label>
-            <textarea 
-                placeholder="Опишите детали: аксессуары, эмоции, хобби..." 
-                required
-            ></textarea>
-        </div>
-
-        <button onclick="submitForm()">🚀 Отправить заказ</button>
-    </div>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand(); // Раскрываем приложение на весь экран
-
-        function submitForm() {
-            const files = document.querySelector('input[type="file"]').files;
-            const comment = document.querySelector('textarea').value;
-
-            if (files.length < 3) {
-                alert('Пожалуйста, загрузите минимум 3 фото');
-                return;
-            }
-
-            // Здесь можно добавить загрузку файлов на сервер
-            // и получение ссылок на них
-
-            const orderData = {
-                photos: Array.from(files).map(file => file.name),
-                comment: comment,
-                user_id: tg.initDataUnsafe.user?.id
-            };
-
-            // Отправляем данные в бота
-            tg.sendData(JSON.stringify(orderData));
-            tg.close();
-        }
-    </script>
-</body>
-</html>
+            backgrou
