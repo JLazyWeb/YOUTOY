@@ -1,0 +1,27 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Или другая ветка, в которой находится код
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v3
+
+      - name: Загружаем файлы для деплоя
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: YOUTOY  # Указываем, что файлы находятся в папке YOUTOY
+
+      - name: Публикация на GitHub Pages
+        uses: actions/deploy-pages@v2
