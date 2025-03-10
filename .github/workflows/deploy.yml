@@ -3,24 +3,26 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Или другая ветка, в которой находится код
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout репозиторий
+      - name: Checkout репозитория
         uses: actions/checkout@v3
 
-      - name: Установка и билд проекта
-        run: |
-          npm install
-          npm run build
-
-      - name: Деплой в GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Загружаем файлы для деплоя
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: gh-pages
-          folder: dist # Если билд сохраняется в dist
-          
+          path: YOUTOY  # Указываем, что файлы находятся в папке YOUTOY
+
+      - name: Публикация на GitHub Pages
+        uses: actions/deploy-pages@v2
+        
